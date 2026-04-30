@@ -255,11 +255,50 @@ Run `./dsa_test.exe` to execute comprehensive tests:
 
 All operations display results for verification.
 
-## Author Notes
+## Notes
 
 This implementation emphasizes:
 1. **Understanding**: Clear code that teaches how each structure works
 2. **Practice**: Hands-on memory management with pointers
 3. **Professionalism**: Industry-standard code organization
 4. **Efficiency**: Optimal time complexity for all operations
+
+
+## Contributors
+
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/fady-nasser">
+        <img src="https://avatars.githubusercontent.com/u/183446123?v=4" width="90px;" style="border-radius:50%"/><br/>
+        <sub><b>Fady Nasser</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Seif-ElDin10">
+        <img src="https://avatars.githubusercontent.com/u/180775212?v=4" width="90px;" style="border-radius:50%"/><br/>
+        <sub><b>Seif ElDin</b></sub>
+      </a>
+     <!-- 
+    </td>
+    <td align="center">
+      <a href="https://github.com/..">
+        <img src="https://avatars.githubusercontent.com/u/143766084?v=4" width="90px;" style="border-radius:50%"/><br/>
+        <sub><b>Hassan Badawy</b></sub>
+      </a>
+      -->
+    </td>
+    <td align="center">
+      <a href="https://github.com/YomnaSabry172">
+        <img src="https://avatars.githubusercontent.com/u/80396445?v=4" width="90px;" style="border-radius:50%"/><br/>
+        <sub><b>Youmna Sabry</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+</div>
+
 
