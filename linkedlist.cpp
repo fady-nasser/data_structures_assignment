@@ -1,4 +1,7 @@
+#include <iostream>
 #include "LinkedList.h"
+
+using namespace std;
 
 LinkedList::LinkedList()
 {
@@ -6,110 +9,161 @@ LinkedList::LinkedList()
     tail = nullptr;
     length = 0;
 }
-//Implementing the methods responsible for adding nodes
+
+LinkedList::~LinkedList()
+{
+    while (head != nullptr)
+    {
+        remove_first();
+    }
+}
+
+// Implementing the methods responsible for adding nodes
 void LinkedList::insertAtEnd(int val)
 {
-    Node *newNode = new Node;
-    newNode->val = val;
+    Node* newNode = new Node(val);
     newNode->next = nullptr;
-    tail->next = newNode;
-    tail = newNode;
+
+    if (head == nullptr)
+    {
+        head = newNode;
+        tail = newNode;
+    }
+    else
+    {
+        tail->next = newNode;
+        tail = newNode;
+    }
     length++;
-    return;
+
 }
 
 void LinkedList::insertAtHead(int val)
 {
-    Node *newNode = new Node;
-    newNode->val = val;
+    Node* newNode = new Node(val);
     newNode->next = head;
     head = newNode;
+
+    if (tail == nullptr)
+    {
+        tail = newNode;
+    }
     length++;
-    return;
+
 }
 
 void LinkedList::add(int val, int index)
 {
-    if(index >= length)
+    if (index < 0 || index > length)
     {
         cout << "Index out of bounds";
         return;
     }
-    //Checking if we can take an easier route
-    else if(index == length - 1)
-    {
-        insertAtEnd(val);
-        return;
-    }
-    else if(index == 0)
+
+    if (index == 0)
     {
         insertAtHead(val);
         return;
     }
-    //Add the new Node
-    Node *newNode = new Node;
-    newNode->val = val;
+
+    if (index == length)
+    {
+        insertAtEnd(val);
+        return;
+    }
+
+    Node* newNode = new Node(val);
     Node* tmp = head;
-    for(int i=0; i<length; i++)
+    for (int i = 0; i < index - 1; i++)
     {
         tmp = tmp->next;
-        if(i == index-1)
-        {
-            newNode->next = tmp->next;
-            tmp->next = newNode;
-            length++;
-            return;
-        }
     }
+    newNode->next = tmp->next;
+    tmp->next = newNode;
+    length++;
 }
 
-
-//Implementing the methods responsible for removing nodes
+// Implementing the methods responsible for removing nodes
 void LinkedList::remove_first()
 {
+    if (head == nullptr)
+    {
+        return;
+    }
+
     Node* new_head = head->next;
     delete head;
     head = new_head;
-    return;
+
+    if (head == nullptr)
+    {
+        tail = nullptr;
+    }
+    length--;
 }
 
-void LinkedList::deleteValue(int index)
+void LinkedList::deleteValue(int val)
 {
-    if(index >= length)
+    if (head == nullptr)
     {
-        cout << "Index out of bounds";
+        cout << "List is empty" << endl;
         return;
     }
-    //Checking if we can take an easier route
-    if(index == 0)
+
+    if (head->val == val)
     {
         remove_first();
         return;
     }
-    //Removing the node
-    Node* tmp = head;
-    Node* before_tmp = head;
-    for(int i = 0; i < length; i++)
+
+    Node* prev = head;
+    Node* curr = head->next;
+    while (curr != nullptr)
     {
-        before_tmp = before_tmp->next;
-        if(i == index-1)
+        if (curr->val == val)
         {
-            tmp = before_tmp->next;
-            before_tmp->next = tmp->next;
-            delete tmp;
+            prev->next = curr->next;
+            if (curr == tail)
+            {
+                tail = prev;
+            }
+            delete curr;
             length--;
             return;
         }
+        prev = curr;
+        curr = curr->next;
     }
+
+    cout << "Value not found" << endl;
 }
 
 void LinkedList::remove_last()
 {
-    deleteValue(length-1);
-    return;
+    if (length <= 1)
+    {
+        remove_first();
+        return;
+    }
+    deleteValue(length - 1);
 }
 
 int LinkedList::get_length()
 {
     return length;
+}
+
+void LinkedList::display()
+{
+    Node* tmp = head;
+    while (tmp != nullptr)
+    {
+        cout << tmp->val;
+        if (tmp->next != nullptr)
+        {
+            cout << " -> ";
+        }
+        tmp = tmp->next;
+    }
+    cout << endl;
 }
