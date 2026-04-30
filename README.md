@@ -272,7 +272,7 @@ This implementation emphasizes:
   <tr>
     <td align="center">
       <a href="https://github.com/fady-nasser">
-        <img src="https://avatars.githubusercontent.com/u/183446123?v=4" width="90px;" style="border-radius:50%"/><br/>
+        <img src="https://avatars.githubusercontent.com/u/106395242?v=4" width="90px;" style="border-radius:50%"/><br/>
         <sub><b>Fady Nasser</b></sub>
       </a>
     </td>
