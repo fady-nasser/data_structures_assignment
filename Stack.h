@@ -1,38 +1,39 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include "LinkedList.h"
 #include "Node.h"
 
 class StackArray {
-    private:
-        int size;
-        int* arr =  new int[capacity];
-        int capacity;
-        int head;
+private:
+    int* arr;
+    int capacity;
+    int top;
 
-    public:
-        StackArray();
-        ~StackArray();
-        //Operation on the stack
-        void push(int val);
-        int pop();
-        int peek();
-        bool isEmpty();
+public:
+    StackArray(int capacity);
+    ~StackArray();
+
+    // Operations on the stack
+    void push(int val);
+    int pop();
+    int peek();
+    bool isEmpty();
 };
 
 class StackLinkedList {
-    LinkedList ll;
-    private:
-        Node* top;
+private:
+    Node* top;
+    int length;
 
-    public:
-        Node* getTop();
-        //Operations on the stack
-        void push(int val);
-        int pop();
-        int peek();
-        bool isEmpty();
+public:
+    StackLinkedList();
+    ~StackLinkedList();
+
+    // Operations on the stack
+    void push(int val);
+    int pop();
+    int peek();
+    bool isEmpty();
 };
 
 #endif 
