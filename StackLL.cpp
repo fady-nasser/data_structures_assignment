@@ -1,56 +1,31 @@
-#include "Stack.h"
 #include <iostream>
+#include "Stack.h"
 
 using namespace std;
 
-StackLinkedList::StackLinkedList()
-{
-    top = nullptr;
-    length = 0;
+//Getter
+Node* StackLinkedList::getTop(){
+    return top;
 }
-
-StackLinkedList::~StackLinkedList()
-{
-    while (!isEmpty())
-    {
-        pop();
-    }
-}
-
 void StackLinkedList::push(int val)
 {
-    Node* newNode = new Node(val);
-    newNode->next = top;
-    top = newNode;
-    length++;
+    top = ll.getHead();
+    ll.insertAtHead(val);
 }
-
 int StackLinkedList::pop()
 {
-    if (isEmpty())
-    {
-        cout << "There isn't any node in the LinkedList" << endl;
-        return 0;
-    }
-    Node* ptr = top;
-    int value = ptr->val;
-    top = ptr->next;
-    delete ptr;
-    length--;
-    return value;
+    ll.remove_first();
 }
-
-int StackLinkedList::peek()
-{
-    if (isEmpty())
-    {
-        cout << "There isn't any node in the LinkedList" << endl;
-        return 0;
-    }
-    return top->val;
-}
-
 bool StackLinkedList::isEmpty()
 {
-    return top == nullptr;
+    return !(ll.get_length());
+}
+int StackLinkedList::peek()
+{
+    if(!(getTop())){
+        cout<<"There isn't any node in the LinkedList";
+        exit(1);
+    }
+    else
+    return getTop()->val;
 }

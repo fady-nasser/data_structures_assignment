@@ -1,62 +1,51 @@
-#include "Stack.h"
-#include <iostream>
 using namespace std;
+#include <iostream>
+#include"Stack.h"
 
-
-StackArray::StackArray(int size)
-{
-    capacity = size;
-    arr = new int[capacity];
-    head = -1;
+//Constructor
+StackArray::StackArray(){
+    head=-1;
+    size=0;
+    cout<<"Enter the size of the array";
+    cin>>capacity;
 }
 
-StackArray::~StackArray()
-{
-    delete[] arr;
-}
-
-void StackArray::push(int val)
-{
-    if (head == capacity - 1)
-    {
-        cout << "Array is full" << endl;
+void StackArray::push(int val){
+    if(size==capacity){
+        cout<<"Array is full";
     }
-    else
-    {
+    else {
         head++;
-        arr[head] = val;
+        size++;
+        arr[head]=val;
     }
 }
-
-int StackArray::pop()
-{
-    if (head == -1)
-    {
-        cout << "There isn't any element in the array" << endl;
-        return 0;
+int StackArray::pop(){
+    if(head==-1){
+    cout<<"There isn't any element in the array";
+    exit(1);
     }
-    else
-    {
+    else{
         int value = arr[head];
         head--;
         return value;
     }
 }
-
-int StackArray::peek()
-{
-    if (head == -1)
-    {
-        cout << "There isn't any element in the array" << endl;
-        return 0;
+int StackArray::peek(){
+    if(head==-1){
+        cout<<"There isn't any element in the array";
+        exit(1);
     }
     else
-    {
         return arr[head];
-    }
 }
-
-bool StackArray::isEmpty()
+bool StackArray::isEmpty(){
+    if(size)
+        return false;
+    else
+        return true;
+}
+StackArray::~StackArray()
 {
-    return head == -1;
+    delete[] arr;
 }

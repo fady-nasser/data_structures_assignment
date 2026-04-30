@@ -167,3 +167,12 @@ void LinkedList::display()
     }
     cout << endl;
 }
+
+Node* LinkedList::getHead(){
+    if(!(head)){
+        cout<<"The isn't any node in the LinkedList";
+        exit(1);
+    }
+    else 
+        return head;
+}

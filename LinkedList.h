@@ -9,6 +9,8 @@ class LinkedList{
     public:
         LinkedList();
         ~LinkedList();
+        //Getter
+        Node* getHead();
         // Defining the methods responsible for adding nodes
         void insertAtEnd(int val);
         void insertAtHead(int val);
