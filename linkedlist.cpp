@@ -88,6 +88,15 @@ void LinkedList::remove_first()
 {
     if (head == nullptr)
     {
+        cout << "List is empty" << endl;
+        return;
+    }
+    if(length==1){
+        Node* temp = head;
+        head = nullptr;
+        tail = nullptr;
+        delete temp;
+        length--;
         return;
     }
 
@@ -145,7 +154,15 @@ void LinkedList::remove_last()
         remove_first();
         return;
     }
-    deleteValue(length - 1);
+    Node* temp = head;
+    while(temp->next!=tail){
+        temp=temp->next;
+    }
+    tail=temp;
+    temp->next=nullptr;
+    delete temp;
+    tail->next=nullptr;
+    length--;
 }
 
 int LinkedList::get_length()
